@@ -1,11 +1,9 @@
-const express = require('express');
-const router = express.Router();
+const mongoose = require('mongoose');
 
-// Example service data or fetch from a database
-const services = [{ name: "Service One", price: 100 }];
-
-router.get('/services', (req, res) => {
-    res.json(services);
+const ServiceSchema = new mongoose.Schema({
+    service: { type: String, required: true },
+    time: { type: String, required: true },
+    cost: { type: Number, required: true },
 });
 
-module.exports = router;
+module.exports = mongoose.model('Service', ServiceSchema);
