@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../ecrFE"
+		}
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.activeBackground": "#76b8eb",
+			"activityBar.background": "#76b8eb",
+			"activityBar.foreground": "#15202b",
+			"activityBar.inactiveForeground": "#15202b99",
+			"activityBarBadge.background": "#df208c",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"commandCenter.border": "#15202b99",
+			"sash.hoverBorder": "#76b8eb",
+			"statusBar.background": "#49a1e5",
+			"statusBar.foreground": "#15202b",
+			"statusBarItem.hoverBackground": "#1f8adc",
+			"statusBarItem.remoteBackground": "#49a1e5",
+			"statusBarItem.remoteForeground": "#15202b",
+			"titleBar.activeBackground": "#49a1e5",
+			"titleBar.activeForeground": "#15202b",
+			"titleBar.inactiveBackground": "#49a1e599",
+			"titleBar.inactiveForeground": "#15202b99"
+		},
+		"peacock.color": "#49a1e5"
+	}
+}
