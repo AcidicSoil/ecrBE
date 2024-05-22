@@ -1,7 +1,7 @@
-GET http://localhost:3001/api/notes/
+GET http://localhost:3001/api/services/
 
 ###
-POST http://localhost:3001/api/notes/ HTTP/1.1
+POST http://localhost:3001/api/services/ HTTP/1.1
 content-type: application/json
 
 {
