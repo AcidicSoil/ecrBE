@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build:ui": "rm -rf dist && cd ../  && npm run build && cp -r dist ../part3-services-backend-part4-2",
+    "build:ui": "rm -rf dist && cd ../ecrFE && npm run build && cp -r dist ../ecrBE",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"

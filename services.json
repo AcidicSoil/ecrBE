@@ -1,0 +1,84 @@
+{
+  "services": [
+  {
+    "id": 1,
+    "content": "Laptop Cleaning\n1.5 hours\n$180"
+  },
+  {
+    "id": 2,
+    "content": "Network Troubleshooting\n2 hours\n$240"
+  },
+  {
+    "id": 3,
+    "content": "Data Transfer\n1.5 hours\n$180"
+  },
+  {
+    "id": 4,
+    "content": "OS Update\n1 hour\n$120"
+  },
+  {
+    "id": 5,
+    "content": "Macbook Pro Repair\n2 hours\n$240"
+  },
+  {
+    "id": 6,
+    "content": "Web Design\n10 hours\n$1200"
+  },
+  {
+    "id": 7,
+    "content": "PC Diagnostic\n0.5 hours\n$60"
+  },
+  {
+    "id": 8,
+    "content": "Email Setup\n0.5 hours\n$60"
+  },
+  {
+    "id": 9,
+    "content": "Cybersecurity Consultation\n2 hours\n$240"
+  },
+  {
+    "id": 10,
+    "content": "Network Server Setup\n3 hours\n$360"
+  },
+  {
+    "id": 11,
+    "content": "Cloud Backup Setup\n1 hour\n$120"
+  },
+  {
+    "id": 12,
+    "content": "VPN Installation\n1 hour\n$120"
+  },
+  {
+    "id": 13,
+    "content": "Website Troubleshooting\n2 hours\n$240"
+  },
+  {
+    "id": 14,
+    "content": "Diagnostic and Consultation\n1 hour\n$120"
+  },
+  {
+    "id": 15,
+    "content": "Security Setup\n3 hours\n$360"
+  },
+  {
+    "id": 16,
+    "content": "Password Reset\n1 hour\n$120"
+  },
+  {
+    "id": 17,
+    "content": "IT Consulting\n1 hour\n$120"
+  },
+  {
+    "id": 18,
+    "content": "BIOS Update\n1 hour\n$120"
+  },
+  {
+    "id": 19,
+    "content": "System Training\n2 hours\n$240"
+  },
+  {
+    "id": 20,
+    "content": "Printer Troubleshooting\n1.5 hours\n$180"
+  }
+]
+}
