@@ -1,33 +1,69 @@
-// /controllers/services.js
-const Service = require('../models/service'); // Assuming you have a Service model
-const { io } = require('../index'); // Import io instance from index.js
+const servicesRouter = require('express').Router();
+const Service = require('../models/service');
+const User = require('../models/user');
+const jwt = require('jsonwebtoken');
 
-exports.getAllServices = async (req, res) => {
-    try {
-        const services = await Service.find({});
-        res.json(services);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+const getTokenFrom = request => {
+    const authorization = request.get('authorization');
+    if (authorization && authorization.startsWith('Bearer ')) {
+        return authorization.replace('Bearer ', '');
     }
+    return null;
 };
 
-exports.createService = async (req, res) => {
-    try {
-        const newService = new Service(req.body);
-        const savedService = await newService.save();
-        io.emit('FromAPI', savedService); // Emit event to Socket.io clients
-        res.status(201).json(savedService);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
-};
+servicesRouter.get('/', async (request, response) => {
+    const services = await Service.find({}).populate('user', { username: 1, name: 1 });
+    response.json(services);
+});
 
-exports.updateService = async (req, res) => {
-    try {
-        const updatedService = await Service.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        io.emit('FromAPI', updatedService); // Emit event to Socket.io clients
-        res.json(updatedService);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
+servicesRouter.post('/', async (request, response) => {
+    const body = request.body;
+
+    const decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET);
+    if (!decodedToken.id) {
+        return response.status(401).json({ error: 'token invalid' });
     }
-};
+
+    const user = await User.findById(decodedToken.id);
+
+    const service = new Service({
+        content: body.content,
+        user: user._id
+    });
+
+    const savedService = await service.save();
+    user.services = user.services.concat(savedService._id);
+    await user.save();
+
+    response.json(savedService);
+});
+
+servicesRouter.get('/:id', async (request, response) => {
+    const service = await Service.findById(request.params.id);
+    if (service) {
+        response.json(service);
+    } else {
+        response.status(404).end();
+    }
+});
+
+servicesRouter.delete('/:id', async (request, response) => {
+    await Service.findByIdAndRemove(request.params.id);
+    response.status(204).end();
+});
+
+servicesRouter.put('/:id', (request, response, next) => {
+    const body = request.body;
+
+    const service = {
+        content: body.content
+    };
+
+    Service.findByIdAndUpdate(request.params.id, service, { new: true })
+        .then(updatedService => {
+            response.json(updatedService);
+        })
+        .catch(error => next(error));
+});
+
+module.exports = servicesRouter;

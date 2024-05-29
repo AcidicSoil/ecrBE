@@ -12,7 +12,6 @@ const usersRouter = require('./controllers/users');
 const loginRouter = require('./controllers/login');
 
 const middleware = require('./utils/middleware');
-const authMiddleware = require('./utils/authMiddleware');
 
 mongoose.set('strictQuery', false);
 
@@ -31,8 +30,8 @@ app.use(express.static('dist'));
 app.use(express.json());
 app.use(middleware.requestLogger);
 
-app.use('/api/services', authMiddleware.verifyToken, servicesRouter);
-app.use('/api/users', authMiddleware.verifyToken, usersRouter);
+app.use('/api/services', servicesRouter);
+app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
 
 if (process.env.NODE_ENV === 'test') {
